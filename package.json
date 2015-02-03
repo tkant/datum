@@ -1,8 +1,18 @@
 {
   "name": "datum",
+  "version": "0.1.0",
   "description": "A simple RESTful mock service for front-end clients.",
-  "version": "0.0.0",
+  "author": "David White <david@spry-soft.com>",
+  "keywords": [
+    "api",
+    "restful",
+    "mock"
+  ],
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidrhyswhite/datum.git"
+  },
   "bin": {
     "datum": "./bin/datum"
   },
