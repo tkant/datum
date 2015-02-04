@@ -3,3 +3,7 @@
 
 # Ignore Node modules
 node_modules
+npm-debug.log
+
+# Ignore fixtures directory used while developing
+fixtures
