@@ -20,6 +20,7 @@
     "start": "node ./bin/datum"
   },
   "dependencies": {
+    "body-parser": "^1.11.0",
     "express": "~4.11.1",
     "pluralize": "^1.1.2"
   }
