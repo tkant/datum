@@ -1,10 +1,12 @@
 var fixtures = process.env.FIXTURES || 'fixtures',
+    mkdirp   = require('mkdirp'),
     fs       = require('fs');
 
 var store = {
   getAll: function (resource) {
     var path = fixtures + '/' + resource,
         objects = [];
+    makeDir(path);
     
     try {
       var files = fs.readdirSync(fixtures + '/' + resource);
@@ -22,13 +24,28 @@ var store = {
   get: function (resource, id) {},
 
   create: function (resource, obj) {
-    fs.writeFile(fixtures + '/' + resource + getNextId(resource) + '.json', JSON.stringify(obj), function (err) {
+    var path = fixtures + '/' + resource,
+        id = getNextId(resource);
+
+    // Set the id on the object
+    obj.id = id;
+    
+    // Make the directory if it doesn't exist
+    makeDir(path);
+    fs.writeFile(path + '/' + id + '.json', JSON.stringify(obj), function (err) {
       if (err) {
         return console.error("Unable to write fixture for resource:", resource);
       }
     });
-
   }
+};
+
+var makeDir = function (path) {
+  mkdirp(path, function (err) {
+    if (err) {
+      console.error("Unable to create directory:", err);
+    }
+  });
 };
 
 var getNextId = function (resource) {
