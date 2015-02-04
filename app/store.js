@@ -20,7 +20,20 @@ var store = {
   },
 
   get: function (resource, id) {},
-  create: function (resource, obj) {}
+
+  create: function (resource, obj) {
+    fs.writeFile(fixtures + '/' + resource + getNextId(resource) + '.json', JSON.stringify(obj), function (err) {
+      if (err) {
+        return console.error("Unable to write fixture for resource:", resource);
+      }
+    });
+
+  }
 };
 
- module.exports = store;
+var getNextId = function (resource) {
+  var files = fs.readdirSync(fixtures + '/' + resource);
+  return (files.length === 0) ? 1 : files.length + 1;
+};
+
+module.exports = store;
