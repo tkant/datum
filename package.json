@@ -17,7 +17,8 @@
     "datum": "./bin/datum"
   },
   "scripts": {
-    "start": "node ./bin/datum"
+    "start": "node ./bin/datum",
+    "test": "mocha"
   },
   "dependencies": {
     "body-parser": "^1.11.0",
