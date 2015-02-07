@@ -21,7 +21,18 @@ var store = {
     return objects;
   },
 
-  get: function (resource, id) {},
+  get: function (resource, id) {
+    var path = fixtures + '/' + resource,
+        object = {};
+    try {
+      object = JSON.parse(fs.readFileSync(path + '/' + id + '.json').toString());
+
+    } catch (error) {
+      console.error("Unable to find fixture for resource and id:", resource, id);
+    }
+    
+    return object;
+  },
 
   create: function (resource, obj) {
     var path = fixtures + '/' + resource,

@@ -20,4 +20,14 @@ router.route('/:resource')
     res.status(201).json(req.body);
   });
 
+router.route('/:resource/:id')
+
+  .get(function (req, res, next) {
+    var resource = req.params.resource,
+        id       = req.params.id,
+        object   = store.get(resource, id);
+
+    res.json(serializer.serializeObject(resource, object));
+  });
+
 module.exports = router;
