@@ -1,20 +1,23 @@
 var pluralize = require('pluralize');
 
 var serializer = {
-  serialize: function (name, objects) {
+
+  serialize: function (name, object) {
     var obj = {};
-    
-    obj[name] = objects;
+    if (Object.prototype.toString.call(object) !== '[object Array]') {
+      name = pluralize.singular(name);
+    }
+    obj[name] = object;
 
     return obj;
   },
 
-  serializeObject: function (name, object) {
-    var obj = {};
-
-    obj[pluralize.singular(name)] = object;
-
-    return obj;
+  deserialize: function(name, object) {
+    if (Object.prototype.toString.call(object) !== '[object Array]') {
+      name = pluralize.singular(name);
+    }
+    
+    return object[name];
   }
 };
 

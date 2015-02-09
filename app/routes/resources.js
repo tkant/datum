@@ -15,7 +15,7 @@ router.route('/:resource')
   .post(function (req, res, next) {
     var resource = req.params.resource;
     
-    store.create(resource, req.body);
+    store.create(resource, serializer.deserialize(resource, req.body));
 
     res.status(201).json(req.body);
   });
@@ -27,7 +27,7 @@ router.route('/:resource/:id')
         id       = req.params.id,
         object   = store.get(resource, id);
 
-    res.json(serializer.serializeObject(resource, object));
+    res.json(serializer.serialize(resource, object));
   });
 
 module.exports = router;
