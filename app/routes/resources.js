@@ -28,6 +28,16 @@ router.route('/:resource/:id')
         object   = store.get(resource, id);
 
     res.json(serializer.serialize(resource, object));
+  })
+  
+  .put(function (req, res, next) {
+    var resource = req.params.resource,
+        id       = req.params.id,
+        
+        // Update the incoming object
+        object = store.update(resource, id, serializer.deserialize(resource, req.body));
+
+    res.json(serializer.serialize(resource, object));
   });
 
 module.exports = router;

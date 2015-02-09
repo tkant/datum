@@ -12,7 +12,7 @@ var serializer = {
     return obj;
   },
 
-  deserialize: function(name, object) {
+  deserialize: function (name, object) {
     if (Object.prototype.toString.call(object) !== '[object Array]') {
       name = pluralize.singular(name);
     }

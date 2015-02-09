@@ -4,7 +4,7 @@ var fixtures = process.env.FIXTURES || 'fixtures',
 
 var store = {
   getAll: function (resource) {
-    var path = fixtures + '/' + resource,
+    var path    = fixtures + '/' + resource,
         objects = [];
     makeDir(path);
     
@@ -22,7 +22,7 @@ var store = {
   },
 
   get: function (resource, id) {
-    var path = fixtures + '/' + resource,
+    var path   = fixtures + '/' + resource,
         object = {};
     try {
       object = JSON.parse(fs.readFileSync(path + '/' + id + '.json').toString());
@@ -36,7 +36,7 @@ var store = {
 
   create: function (resource, obj) {
     var path = fixtures + '/' + resource,
-        id = getNextId(resource);
+        id   = getNextId(resource);
 
     // Set the id on the object
     obj.id = id;
@@ -48,6 +48,25 @@ var store = {
         return console.error("Unable to write fixture for resource:", resource);
       }
     });
+  },
+
+  update: function (resource, id, newObject) {
+    var path = fixtures + '/' + resource,
+        object = this.get(resource, id);
+    
+    for (var property in newObject) {
+      if (object.hasOwnProperty(property)) {
+        object[property] = newObject[property];
+      }
+    }
+
+    fs.writeFile(path + '/' + id + '.json', JSON.stringify(object), function (err) {
+      if (err) {
+        return console.error("Unable to write fixture for resource:", resource);
+      }
+    });
+    
+    return object;
   }
 };
 
