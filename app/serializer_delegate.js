@@ -1,6 +1,6 @@
 var serializers = {
   default: require('./serializers/default'),
-  rest: require('./serializers/ember_rest')
+  ember_rest: require('./serializers/ember_rest')
 };
 
 var serializer = function (del) {
