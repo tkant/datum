@@ -16,7 +16,7 @@ var serializer = {
     if (Object.prototype.toString.call(object) !== '[object Array]') {
       name = pluralize.singular(name);
     }
-    
+
     return object[name];
   }
 };

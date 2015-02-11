@@ -1,12 +1,32 @@
 #!/usr/bin/env node
 
-var app = require('../app/app');
-var http = require('http');
+var program = require('commander'),
+    package = require('../package'),
+    http    = require('http'),
+    options = {
+      serializer: 'default'
+    };
 
-var port = process.env.PORT || '3000';
+program
+  .version(package.version)
+  .option('-p, --port <port>', 'specify a port to run the server.', parseInt)
+  .option('-e, --ember <adapter>', 'use an Ember.js based [adapter].')
+  .parse(process.argv);
+
+
+// Parse ember serializer options
+['ember'].forEach(function (option) {
+  if (typeof program[option] !== 'undefined') {
+    options.serializer = option + '_' + program[option];
+  }
+});
+
+var app    = require('../app/app')(options);
+    server = http.createServer(app),
+    port = program.port || 3000;
+
 app.set('port', port);
 
-var server = http.createServer(app);
 server.listen(port);
 
 console.log('Listening on port:', port);
