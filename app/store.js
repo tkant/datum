@@ -67,6 +67,16 @@ var store = {
     });
     
     return object;
+  },
+
+  delete: function (resource, id) {
+    var fixture = fixtures + '/' + resource + '/' + id + '.json';
+
+    fs.unlinkSync(fixture, function (err) {
+      if (err) {
+        console.error('Unable to delete fixture for resource and id:', resource, id);
+      }
+    });
   }
 };
 

@@ -22,7 +22,7 @@ This will get the datum server started locally on port 3000. Datum is configured
 
     $ FIXTURES=json-files datum --port 3030
 
-## Ember.js support
+### Ember.js support
 
 Datum comes with support for Ember.js based applications. Support for the Ember `DS.RESTAdapter` is included and support for the Ember `DS.ActiveModelAdapter` is in the works to allow your development based application to run in an almost like for like scenario as your production environment with no need to switch between adapters based on the environment.
 

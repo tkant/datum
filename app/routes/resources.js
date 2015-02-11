@@ -39,6 +39,17 @@ router.route('/:resource/:id')
         object = store.update(resource, id, s.deserialize(resource, req.body));
 
     res.json(s.serialize(resource, object));
+  })
+
+  .delete(function (req, res, next) {
+    var resource = req.params.resource,
+        id       = req.params.id,
+        s        = serializer(res.locals.serializer)
+
+    store.delete(resource, id);
+
+    res.status(204).end();
+    
   });
 
 module.exports = router;
