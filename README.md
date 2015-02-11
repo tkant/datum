@@ -24,9 +24,9 @@ This will get the datum server started locally on port 3000. Datum is configured
 
 ## Ember.js support
 
-Datum comes with support for Ember.js based applications. Support for the `Ember.RESTAdapter` is included and support for the `Ember.ActiveModelAdapter` is in the works to allow your development based application to run in an almost like for like scenario as your production environment with no need to switch between adapters based on the environment.
+Datum comes with support for Ember.js based applications. Support for the Ember `DS.RESTAdapter` is included and support for the Ember `DS.ActiveModelAdapter` is in the works to allow your development based application to run in an almost like for like scenario as your production environment with no need to switch between adapters based on the environment.
 
-To use the Ember.RESTAdapter run the Datum binary with the `--ember rest` flag or `-e rest` for short.
+To use the Emer `DS.RESTAdapter` run the Datum binary with the `--ember rest` flag or `-e rest` for short.
 
     $ datum --ember rest
 
@@ -35,7 +35,7 @@ To use the Ember.RESTAdapter run the Datum binary with the `--ember rest` flag o
 The following are features planned for development:
 
 * Add feature to allow deletion of resources
-* Add a serializer with support for `Ember.ActiveModelAdapter`
+* Add a serializer with support for Ember `DS.ActiveModelAdapter`
 * Add support for specifying the resource `id` field, speficically to mimic MongoDB `_id` based formats
 * Add support for a  `--json-root false` flag to remove the root resource JSON object for Ember.js based resources
 * Ambitious: Nested resources support
