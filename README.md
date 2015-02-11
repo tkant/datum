@@ -38,7 +38,9 @@ The following are features planned for development:
 * Add a serializer with support for Ember `DS.ActiveModelAdapter`
 * Add support for specifying the resource `id` field, speficically to mimic MongoDB `_id` based formats
 * Add support for a  `--json-root false` flag to remove the root resource JSON object for Ember.js based resources
-* Ambitious: Nested resources support
+* Add support for a .datumrc file to ease setting various options
+* Fairly ambitious: Add ability to sort collection based resources with a user defined param
+* Very ambitious: Nested resources support
 
 ## Contributing
 
