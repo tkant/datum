@@ -34,8 +34,9 @@ To use the Emer `DS.RESTAdapter` run the Datum binary with the `--ember rest` fl
 
 The following are features planned for development:
 
-* Add feature to allow deletion of resources
 * Add a serializer with support for Ember `DS.ActiveModelAdapter`
+* Add support for response latency to simulate slow user connections to the API
+* Add support for singularizing a request to a singular response
 * Add support for specifying the resource `id` field, speficically to mimic MongoDB `_id` based formats
 * Add support for a  `--json-root false` flag to remove the root resource JSON object for Ember.js based resources
 * Add support for a .datumrc file to ease setting various options
