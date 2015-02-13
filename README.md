@@ -22,6 +22,18 @@ This will get the datum server started locally on port 3000. Datum is configured
 
     $ FIXTURES=json-files datum --port 3030
 
+### Latency
+
+Datum comes with support for spoecifying wither a fixed or variable latency. To set a fixed latency run the binary with the `--latency` command:
+
+    $ datum --latency 4000
+
+This will set a 4 second delay on all requests to the datum API. To set a variable latency simply pass a range separated by 2 dots:
+
+    $ datum --latency 200..800
+
+This will delay each request randomly somewhere between 200ms to 800ms.
+
 ### Ember.js support
 
 Datum comes with support for Ember.js based applications. Support for the Ember `DS.RESTAdapter` is included and support for the Ember `DS.ActiveModelAdapter` is in the works to allow your development based application to run in an almost like for like scenario as your production environment with no need to switch between adapters based on the environment.
@@ -35,7 +47,6 @@ To use the Emer `DS.RESTAdapter` run the Datum binary with the `--ember rest` fl
 The following are features planned for development:
 
 * Add a serializer with support for Ember `DS.ActiveModelAdapter`
-* Add support for response latency to simulate slow user connections to the API
 * Add support for singularizing a request to a singular response
 * Add support for specifying the resource `id` field, speficically to mimic MongoDB `_id` based formats
 * Add support for a  `--json-root false` flag to remove the root resource JSON object for Ember.js based resources
